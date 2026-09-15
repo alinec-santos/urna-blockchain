@@ -4,10 +4,10 @@ async function main() {
   console.log("----------------------------------------------------");
   console.log("🚀 Iniciando o deploy da Urna Eletronica Descentralizada...");
 
-  // Conecta à rede (local simulation ou nó localhost)
   const { viem, networkName } = await network.create();
   console.log(`🌐 Rede conectada: ${networkName}`);
 
+  const publicClient = await viem.getPublicClient();
   const walletClients = await viem.getWalletClients();
   const admin = walletClients.at(0);
   console.log(`👤 Autoridade Eleitoral (Deployer): ${admin.account.address}`);
@@ -16,11 +16,10 @@ async function main() {
   const urna = await viem.deployContract("UrnaEletronica", [], {
     client: { wallet: admin },
   });
-
   console.log(`✅ Contrato UrnaEletronica implantado em: ${urna.address}`);
 
   // 2. Cadastro de Candidatos Iniciais (Simulação Presidencial)
-  console.log("\n🗳️ Cadastrando candidatos iniciais...");
+  console.log("\n🗳️ Cadastrando candidatos iniciais na Sepolia...");
 
   const candidatosIniciais = [
     { numero: 13n, nome: "Candidata Ana Silva", partido: "Partido da Tecnologia (PTec)" },
@@ -29,21 +28,25 @@ async function main() {
   ];
 
   for (const c of candidatosIniciais) {
-    await urna.write.cadastrarCandidato([c.numero, c.nome, c.partido], {
+    console.log(`  -> Enviando transação do candidato [${c.numero}]...`);
+    const hash = await urna.write.cadastrarCandidato([c.numero, c.nome, c.partido], {
       account: admin.account,
     });
-    console.log(`  -> Cadastrado: [${c.numero}] ${c.nome} - ${c.partido}`);
+    // Aguarda a confirmação no bloco da Sepolia
+    await publicClient.waitForTransactionReceipt({ hash });
+    console.log(`  -> Confirmado na rede: [${c.numero}] ${c.nome} - ${c.partido}`);
   }
 
   // 3. Abertura Oficial da Eleição
   console.log("\n🟢 Abrindo a eleição para recebimento de votos...");
-  await urna.write.iniciarEleicao([], { account: admin.account });
+  const txIniciar = await urna.write.iniciarEleicao([], { account: admin.account });
+  await publicClient.waitForTransactionReceipt({ hash: txIniciar });
 
   const estado = await urna.read.estadoAtual();
   console.log(`📢 Status da eleição: ${estado === 1 ? "Em Andamento (Aberta)" : estado}`);
 
-  console.log("\n📋 Resumo para o Frontend:");
-  console.log(`   VITE_CONTRACT_ADDRESS="${urna.address}"`);
+  console.log("\n📋 Endereço para usar no Frontend:");
+  console.log(`   ${urna.address}`);
   console.log("----------------------------------------------------");
 }
 
