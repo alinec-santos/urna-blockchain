@@ -2,6 +2,14 @@
 
 Um simulador da urna eletrônica brasileira baseado em contratos inteligentes na EVM (Ethereum Virtual Machine). O projeto demonstra como a tecnologia blockchain garante a **segurança**, a **imutabilidade**, a **prevenção de voto duplo** e, principalmente, a **apuração automatizada e instantânea** dos votos.
 
+
+---
+
+## 🌐 Demonstração Online
+
+* 🔗 **Aplicação em Produção:** [https://urna-blockchain-lac.vercel.app/](https://urna-blockchain-lac.vercel.app/)
+* 📜 **Smart Contract (Sepolia Etherscan):** [`0x94e811c951dbf0c8d4f008d6aac9713cea488125`](https://sepolia.etherscan.io/address/0x94e811c951dbf0c8d4f008d6aac9713cea488125)
+
 ---
 
 ## 📸 Demonstração da Interface
