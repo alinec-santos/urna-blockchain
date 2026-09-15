@@ -34,13 +34,13 @@ export const PainelApuracao: React.FC<PainelApuracaoProps> = ({
     <div className="modal-overlay">
       <div className="modal-content">
         <div className="modal-header">
-          <h2>📊 Boletim de Urna (Apuração Instantânea)</h2>
+          <h2>Boletim de Urna (Apuração Instantânea)</h2>
           <button className="btn-fechar" onClick={onFechar}>&times;</button>
         </div>
 
         <div className="modal-body">
           <p className="modal-destaque">
-            Os votos são apurados em <strong>tempo real</strong> no estado da blockchain. Não há intervenção ou contagem manual.
+            Os votos são apurados em tempo real no estado da blockchain. Não há intervenção ou contagem manual.
           </p>
 
           <div className="resumo-cards">
@@ -90,7 +90,7 @@ export const PainelApuracao: React.FC<PainelApuracaoProps> = ({
 
           <div className="modal-acoes">
             <button className="btn-atualizar" onClick={atualizar} disabled={atualizando}>
-              {atualizando ? "Consultando EVM..." : "🔄 Atualizar Contadores"}
+              {atualizando ? "Consultando EVM..." : "Atualizar Contadores"}
             </button>
           </div>
         </div>

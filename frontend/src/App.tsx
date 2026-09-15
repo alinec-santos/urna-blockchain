@@ -25,7 +25,6 @@ export function App() {
   const [etapaFim, setEtapaFim] = useState<boolean>(false);
   const [modalApuracao, setModalApuracao] = useState<boolean>(false);
 
-  // Digitação de números (0-9)
   const handleDigito = async (digito: string) => {
     if (etapaFim || carregando || jaVotou || isBranco) return;
     if (digitos.length >= 2) return;
@@ -34,7 +33,6 @@ export function App() {
     const novosDigitos = [...digitos, digito];
     setDigitos(novosDigitos);
 
-    // Quando atinge 2 dígitos, busca dados do candidato no contrato
     if (novosDigitos.length === 2) {
       const numero = Number(novosDigitos.join(""));
       const cand = await buscarCandidato(numero);
@@ -42,7 +40,6 @@ export function App() {
     }
   };
 
-  // Tecla BRANCO
   const handleBranco = () => {
     if (etapaFim || carregando || jaVotou) return;
     if (digitos.length === 0) {
@@ -52,7 +49,6 @@ export function App() {
     }
   };
 
-  // Tecla CORRIGE
   const handleCorrige = () => {
     if (etapaFim || carregando) return;
     sonsUrna.tocarTecla();
@@ -61,7 +57,6 @@ export function App() {
     setCandidato(null);
   };
 
-  // Tecla CONFIRMA
   const handleConfirma = async () => {
     if (etapaFim || carregando || jaVotou) return;
     if (!account) {
@@ -69,7 +64,6 @@ export function App() {
       return;
     }
 
-    // 1. Confirmação de Voto em Branco
     if (isBranco) {
       const sucesso = await votarBranco();
       if (sucesso) {
@@ -79,7 +73,6 @@ export function App() {
       return;
     }
 
-    // 2. Confirmação de Voto Nominal ou Nulo (com 2 dígitos)
     if (digitos.length === 2) {
       const numero = Number(digitos.join(""));
       const sucesso = await votar(numero);
@@ -93,9 +86,9 @@ export function App() {
   return (
     <div className="container-aplicacao">
       <header className="cabecalho-app">
-        <div className="titulo-app">
+        <div className="titulo-bloco">
           <h1>Urna Eletrônica Descentralizada</h1>
-          <span className="badge-rede">EVM Local / Hardhat</span>
+          <span className="badge-rede">Ethereum Sepolia</span>
         </div>
 
         <div className="acoes-cabecalho">
@@ -116,13 +109,12 @@ export function App() {
             className="btn-apuracao"
             onClick={() => setModalApuracao(true)}
           >
-            📊 Boletim de Urna
+            Boletim de Urna
           </button>
         </div>
       </header>
 
       <main className="area-urna">
-        {/* Gabinete Físico da Urna */}
         <div className="gabinete-urna">
           <div className="secao-tela">
             <TelaUrna
