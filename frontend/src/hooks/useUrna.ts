@@ -2,6 +2,13 @@ import { useState, useEffect, useCallback } from "react";
 import { ethers } from "ethers";
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "../constants/contract";
 
+// Declaração para o TypeScript reconhecer a MetaMask no window
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 // Interfaces exportadas para os componentes
 export interface CandidatoInfo {
   numero: number;
