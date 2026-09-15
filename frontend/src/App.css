@@ -1,0 +1,482 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1e242d;
+  color: #f3f4f6;
+  min-height: 100vh;
+}
+
+.container-aplicacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+/* Header */
+.cabecalho-app {
+  width: 100%;
+  max-width: 1050px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1.25rem;
+  background: #2b333e;
+  border-radius: 8px;
+  border: 1px solid #3e4856;
+}
+
+.titulo-app h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.badge-rede {
+  font-size: 0.75rem;
+  background: #0284c7;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+.acoes-cabecalho {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-conectar {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-conectar:hover {
+  background: #1d4ed8;
+}
+
+.eleitor-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #181e26;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #374151;
+  font-family: monospace;
+}
+
+.status-ponto {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.btn-apuracao {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Gabinete da Urna */
+.gabinete-urna {
+  display: flex;
+  flex-direction: row;
+  background: #caced3;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  gap: 2.5rem;
+  border: 2px solid #aeb4bc;
+}
+
+/* Seção da Tela */
+.secao-tela {
+  flex: 1.4;
+  min-width: 440px;
+}
+
+.tela-urna {
+  background: #f4f6f0;
+  color: #111;
+  border: 3px solid #6b7280;
+  border-radius: 4px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.cabecalho-tela {
+  display: flex;
+  flex-direction: column;
+}
+
+.seu-voto {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.cargo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.corpo-votacao {
+  flex: 1;
+  margin-top: 1rem;
+}
+
+.linha-numero {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rotulo-numero {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.caixas-digitos {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.caixa-digito {
+  width: 40px;
+  height: 52px;
+  border: 2px solid #111;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.caixa-digito.pisca {
+  border-bottom: 4px solid #111;
+  animation: piscar 0.9s infinite;
+}
+
+@keyframes piscar {
+  50% { opacity: 0.3; }
+}
+
+.dados-candidato {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.info-linha {
+  font-size: 1.1rem;
+}
+
+.info-rotulo {
+  color: #4b5563;
+  margin-right: 0.5rem;
+}
+
+.info-valor {
+  font-weight: bold;
+}
+
+.numero-errado, .voto-nulo-texto {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #b91c1c;
+}
+
+.voto-branco-aviso {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 4rem;
+  letter-spacing: 2px;
+}
+
+.rodape-tela {
+  border-top: 2px solid #374151;
+  padding-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #374151;
+  line-height: 1.3;
+}
+
+.tela-fim {
+  align-items: center;
+  justify-content: center;
+  background: #f4f6f0;
+}
+
+.texto-fim {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.subtexto-fim {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #16a34a;
+  margin-top: 0.5rem;
+}
+
+.tela-processando, .tela-aviso {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.spinner {
+  width: 45px;
+  height: 45px;
+  border: 4px solid #d1d5db;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  animation: girar 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* Seção do Teclado */
+.secao-teclado {
+  width: 280px;
+  background: #25282d;
+  padding: 1.5rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  border: 2px solid #1c1e22;
+}
+
+.topo-teclado {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.brasao-urna {
+  color: #f3f4f6;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.grade-numerica {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-teclado {
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
+  transition: transform 0.05s, box-shadow 0.05s;
+}
+
+.btn-teclado:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+.btn-num {
+  background: #111315;
+  color: white;
+  font-size: 1.4rem;
+  padding: 0.75rem 0;
+}
+
+.btn-0 {
+  grid-column: 2;
+}
+
+.acoes-teclado {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.btn-branco {
+  background: #ffffff;
+  color: #111;
+  font-size: 0.75rem;
+  padding: 0.8rem 0.4rem;
+  flex: 1;
+}
+
+.btn-corrige {
+  background: #f97316;
+  color: #111;
+  font-size: 0.75rem;
+  padding: 0.8rem 0.4rem;
+  flex: 1;
+}
+
+.btn-confirma {
+  background: #22c55e;
+  color: #111;
+  font-size: 0.85rem;
+  padding: 1.2rem 0.4rem;
+  flex: 1.2;
+}
+
+/* Modal de Apuração */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-content {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  padding: 1.5rem;
+  color: white;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #374151;
+  padding-bottom: 0.75rem;
+}
+
+.btn-fechar {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-destaque {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin: 1rem 0;
+}
+
+.resumo-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-metrica {
+  background: #111827;
+  padding: 0.75rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.card-rotulo {
+  display: block;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.card-valor {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+.lista-apuracao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.item-candidato {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111827;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+}
+
+.candidato-detalhe {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.candidato-num {
+  font-size: 1.2rem;
+  font-weight: 800;
+  background: #374151;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.partido-texto {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.porcentagem {
+  font-size: 0.8rem;
+  color: #34d399;
+  display: block;
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.btn-atualizar {
+  background: #0284c7;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
